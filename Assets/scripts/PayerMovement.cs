@@ -1,11 +1,12 @@
 using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PayerMovement : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-
+    public Transform groundCheck;
     private GameObject player;
     public float moveSpeed;
     public float jumpHeight = 200.0f;
@@ -15,11 +16,11 @@ public class PlayerMovement : MonoBehaviour
     private float dashCooldown = 1f;
     private bool canDash = true;
     private bool isDashing = false;
-    private bool grounded = true;
+    public bool isgrounded;
     private bool canDoubleJump = true;
     private Rigidbody2D rb2d;
     private float _movement;
-    public PlayerInput playerInput;
+   
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -27,18 +28,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Vector3 move = playerInput.actions["Move"].ReadValue<Vector2>() * speed * Time.deltaTime;
-        player.transform.Translate(move);
-        var jumpAction = playerInput.actions["Jump"];
-        var dashAction = playerInput.actions["dash"];
-        if (jumpAction !=null)
-        {
-            Jump();
-        }
-        if (dashAction != null && canDash)
-        {
-            StartCoroutine(Dash());
-        }
+
+        rb2d.linearVelocityX = _movement;
 
         if (!isDashing)
         {
@@ -64,22 +55,34 @@ public class PlayerMovement : MonoBehaviour
     }
 
     
-
-    void Jump()
+    public void Move(InputAction.CallbackContext ctx)
     {
-        if (grounded)
+        _movement = ctx.ReadValue<Vector2>().x * speed;
+    }
+    public void Jump(InputAction.CallbackContext ctx)
+    {
+        if (ctx.ReadValue<float>() == 1)
         {
-            rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, jumpHeight);
-            grounded = false;
-            canDoubleJump = true;
-        }
-        else if (canDoubleJump)
-        {
-            rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, jumpHeight);
-            canDoubleJump = false;
+            if (isgrounded == true)
+            {
+                rb2d.linearVelocityY = jumpHeight;
+                isgrounded = false;
+                canDoubleJump = true;
+            }
+            else if (canDoubleJump)
+            {
+                rb2d.linearVelocityY = jumpHeight;
+                canDoubleJump = false;
+            }
         }
     }
-
+    public void Dash(InputAction.CallbackContext ctx)
+    {
+        if (canDash)
+        {
+            StartCoroutine(Dash());
+        }
+    }
     private IEnumerator Dash()
     {
         canDash = false;
@@ -102,12 +105,5 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Add this method to detect landing on the ground
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-
-
-        grounded = true;
-        canDoubleJump = true;
-
-    }
+   
 }
