@@ -497,10 +497,10 @@
                 {
                     "name": "",
                     "id": "b9935d44-76a9-4415-a12f-a392c365a778",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "dash",
                     "isComposite": false,
                     "isPartOfComposite": false

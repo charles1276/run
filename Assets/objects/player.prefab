@@ -130,7 +130,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 9
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -339,6 +339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 800772848260133527}
   groundCheck: {fileID: 7937438302174749041}
+  groundHeck: {fileID: 1693404243870319995}
   moveSpeed: 0
   jumpHeight: 200
   speed: 3
@@ -370,7 +371,7 @@ Transform:
   m_GameObject: {fileID: 7949716809874417977}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.056, y: -1.262, z: 0}
+  m_LocalPosition: {x: 0, y: -0.872, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -406,7 +407,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -424,4 +425,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3151a84d36b7614ea1a8c9f8e1ff7db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isground: 0
   payerMovement: {fileID: 5869065437883246987}

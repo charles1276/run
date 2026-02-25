@@ -13,13 +13,13 @@ public class PayerMovement : MonoBehaviour
     public float moveSpeed;
     public float jumpHeight = 200.0f;
     public float speed = 3.0f;
-    private float dashSpeed = 24f;
+    private float dashSpeed = 40f;
     private float dashTime = 0.2f;
     private float dashCooldown = 1f;
     private bool canDash = true;
     private bool isDashing = false;
     public bool isgrounded;
-    private bool canDoubleJump = true;
+    private bool canDoubleJump;
     private Rigidbody2D rb2d;
     private float _movement;
    
@@ -30,7 +30,7 @@ public class PayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (GroundHeck.isground == true) { isgrounded = true; }
+          if (groundHeck != null && groundHeck.isground == true) { isgrounded = true; }
 
         rb2d.linearVelocityX = _movement;
 
@@ -64,20 +64,20 @@ public class PayerMovement : MonoBehaviour
     }
     public void Jump(InputAction.CallbackContext ctx)
     {
-        if (ctx.ReadValue<float>() == 1)
-        {
+       
+        
             if (isgrounded == true)
             {
                 rb2d.linearVelocityY = jumpHeight;
                 isgrounded = false;
                 canDoubleJump = true;
             }
-            else if (canDoubleJump)
+            if (canDoubleJump == true)
             {
                 rb2d.linearVelocityY = jumpHeight;
                 canDoubleJump = false;
             }
-        }
+        
     }
     public void Dash(InputAction.CallbackContext ctx)
     {
