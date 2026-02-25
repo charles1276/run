@@ -5,15 +5,7 @@ public class GroundHeck : MonoBehaviour
 {
     public bool isground;
     public PayerMovement payerMovement;
-    private void Update()
-    {
-
-
-        if (payerMovement.isgrounded == true)
-        {
-            isground = true;
-        }
-    }
+   
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("ground"))

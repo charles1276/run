@@ -64,20 +64,21 @@ public class PayerMovement : MonoBehaviour
     }
     public void Jump(InputAction.CallbackContext ctx)
     {
-       
-        
+        if (ctx.started)
+        {
             if (isgrounded == true)
             {
                 rb2d.linearVelocityY = jumpHeight;
                 isgrounded = false;
                 canDoubleJump = true;
             }
-            if (canDoubleJump == true)
+            else if (canDoubleJump == true)
             {
                 rb2d.linearVelocityY = jumpHeight;
                 canDoubleJump = false;
             }
-        
+
+        }
     }
     public void Dash(InputAction.CallbackContext ctx)
     {
