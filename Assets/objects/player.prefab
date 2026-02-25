@@ -322,7 +322,7 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &5869065437883246987
@@ -424,4 +424,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3151a84d36b7614ea1a8c9f8e1ff7db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  payerMovement: {fileID: 0}
+  payerMovement: {fileID: 5869065437883246987}

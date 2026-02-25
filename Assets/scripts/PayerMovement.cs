@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,6 +8,7 @@ public class PayerMovement : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     public Transform groundCheck;
+    public GroundHeck groundHeck;
     private GameObject player;
     public float moveSpeed;
     public float jumpHeight = 200.0f;
@@ -28,6 +30,7 @@ public class PayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (GroundHeck.isground == true) { isgrounded = true; }
 
         rb2d.linearVelocityX = _movement;
 
@@ -103,7 +106,7 @@ public class PayerMovement : MonoBehaviour
 
 
     }
-
+    
     // Add this method to detect landing on the ground
    
 }
