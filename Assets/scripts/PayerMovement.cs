@@ -7,17 +7,20 @@ using UnityEngine.InputSystem;
 public class PayerMovement : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private TrailRenderer tr;
+
     public Transform groundCheck;
     public GroundHeck groundHeck;
     private GameObject player;
     public float moveSpeed;
     public float jumpHeight = 200.0f;
     public float speed = 3.0f;
-    private float dashSpeed = 40f;
-    private float dashTime = 0.2f;
+    public float dashSpeed = 140f;
+    private float dashTime = 1.0f;
     private float dashCooldown = 1f;
     private bool canDash = true;
     private bool isDashing = false;
+   
     public bool isgrounded;
     private bool canDoubleJump;
     private Rigidbody2D rb2d;
@@ -26,6 +29,9 @@ public class PayerMovement : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        TrailRenderer tr = GetComponent<TrailRenderer>();
+
+        tr.emitting = false;
     }
 
     void Update()
@@ -33,6 +39,7 @@ public class PayerMovement : MonoBehaviour
           if (groundHeck != null && groundHeck.isground == true) { isgrounded = true; }
 
         rb2d.linearVelocityX = _movement;
+        moveSpeed = rb2d.linearVelocity.x;
 
         if (!isDashing)
         {
@@ -89,25 +96,27 @@ public class PayerMovement : MonoBehaviour
     }
     private IEnumerator Dash()
     {
+        
         canDash = false;
         isDashing = true;
         float originalGravity = rb2d.gravityScale;
         rb2d.gravityScale = 0;
-
-        float dashDir = _movement != 0 ? Mathf.Sign(_movement) : 1f;
-        rb2d.linearVelocity = new Vector2(dashDir * dashSpeed, 0);
-
+        Debug.Log("Dash");
+        float dr = moveSpeed * dashSpeed;
+        rb2d.linearVelocity = new Vector2(dr, 0);
+        Debug.Log(rb2d.linearVelocity);
+        tr.emitting = true;
         yield return new WaitForSeconds(dashTime);
-
+        Debug.Log("End Dash");
         rb2d.gravityScale = originalGravity;
         isDashing = false;
 
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
-
+        tr.emitting = false;
 
     }
     
-    // Add this method to detect landing on the ground
+   
    
 }
