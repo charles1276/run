@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PayerMovement : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
+    //[SerializeField] private Animator animator;
     [SerializeField] private TrailRenderer tr;
 
     public Transform groundCheck;
@@ -45,23 +45,24 @@ public class PayerMovement : MonoBehaviour
         {
             rb2d.linearVelocity = new Vector2(_movement, rb2d.linearVelocity.y);
         }
+        
 
-        if (rb2d.linearVelocity.x > 0)
-        {
-            animator.SetInteger("walkdirction", +1);
-            GetComponent<SpriteRenderer>().flipX = false;
-        }
-        else if (rb2d.linearVelocity.x < 0)
-        {
-            animator.SetInteger("walkdirction", -1);
-            GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else
-        {
-            animator.SetInteger("walkdirction", 0);
-        }
+       // if (rb2d.linearVelocity.x > 0)
+       // {
+       //     animator.SetInteger("walkdirction", +1);
+        //    GetComponent<SpriteRenderer>().flipX = false;
+       // }
+       // else if (rb2d.linearVelocity.x < 0)
+       // {
+       //     animator.SetInteger("walkdirction", -1);
+       //     GetComponent<SpriteRenderer>().flipX = true;
+      //  }
+      //  else
+      //  {
+        //    animator.SetInteger("walkdirction", 0);
+      //  }
 
-        animator.SetBool("isJumping", rb2d.linearVelocity.y != 0);
+       // animator.SetBool("isJumping", rb2d.linearVelocity.y != 0);
     }
 
     
@@ -82,6 +83,7 @@ public class PayerMovement : MonoBehaviour
             else if (canDoubleJump == true)
             {
                 rb2d.linearVelocityY = jumpHeight;
+                
                 canDoubleJump = false;
             }
 
