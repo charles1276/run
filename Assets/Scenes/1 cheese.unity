@@ -300,6 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameracontrller: {fileID: 519420033}
   maincamera: {fileID: 519420028}
+  cn: 0
   cj: 0
   p1cj: 0
   p2cj: 0
@@ -309,7 +310,6 @@ MonoBehaviour:
   p2isfront: 0
   p3isfront: 0
   p4isfront: 0
-  pl: {fileID: 0}
 --- !u!1 &593853555 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 29480652363140640, guid: d122eb8722c35954ca86099993264d31, type: 3}
@@ -742,6 +742,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 519420032}
     m_Modifications:
     - target: {fileID: 275676130669128406, guid: d122eb8722c35954ca86099993264d31, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 275676130669128406, guid: d122eb8722c35954ca86099993264d31, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12994.6
       objectReference: {fileID: 0}
@@ -751,7 +755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 275676130669128406, guid: d122eb8722c35954ca86099993264d31, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 53.296
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 275676130669128406, guid: d122eb8722c35954ca86099993264d31, type: 3}
       propertyPath: m_LocalRotation.w

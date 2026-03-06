@@ -2,43 +2,32 @@ using UnityEngine;
 
 public class BorderMove : MonoBehaviour
 {
-    private GameObject bt;
+    public GameObject targets;
+    public camracontruller inf;
+    public float speed = 3f;
+    public Vector3 offset;
+    public cameracontruller cc;
     private Camera mc;
-    private Vector2 mcv;
-    private Vector2 btV;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        bt = GameObject.FindGameObjectWithTag("borders");
-        mc = GameObject.Find("Main Camera").GetComponent<Camera>();
-        btV = bt.transform.position;
-        mcv = mc.transform.position;
+        mc = GetComponent<Camera>();
+
+        if (cc == null)
+        {
+            cc = mc.GetComponent<cameracontruller>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 currentPos = bt.transform.position;
+        if cc.
+        cc.target = targets;
+    }
 
-        if (btV.x < mcv.x)
-        {
-            currentPos.x = mcv.x;
-            bt.transform.position = currentPos;
-        }
-        if (btV.x > mcv.x)
-        {
-            currentPos.x -= 0.01f;
-            bt.transform.position = currentPos;
-        }
-        if (btV.y < mcv.y)
-        {
-            currentPos.y += 0.01f;
-            bt.transform.position = currentPos;
-        }
-        if (btV.y > mcv.y)
-        {
-            currentPos.y -= 0.01f;
-            bt.transform.position = currentPos;
-        }
+    private void FixedUpdate()
+    {
+        transform.position = Vector3.Lerp(transform.position, targets.transform.position + offset, Time.fixedDeltaTime * speed);
     }
 }

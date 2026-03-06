@@ -4,14 +4,14 @@ using UnityEngine;
 public class PlayerLocation : MonoBehaviour
 {
     private GameObject player;
-    public InFront inFront;
+    public camracontruller inFront;
     private Camera mc;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         mc = Camera.main;
         player = this.gameObject;
-        inFront = mc.GetComponent<InFront>();
+        inFront = mc.GetComponent<camracontruller>();
 
     }
 
