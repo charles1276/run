@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - ground
+  - border
+  - border2
+  - border3
+  - border4
+  - borders
   layers:
   - Default
   - TransparentFX
