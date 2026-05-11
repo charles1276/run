@@ -22,7 +22,7 @@ public class BorderMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if cc.
+        if( cc.target != targets)
         cc.target = targets;
     }
 
