@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InFront : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class InFront : MonoBehaviour
     public bool p2isfront = false;
     public bool p3isfront = false;
     public bool p4isfront = false;
+    public PlayerInputManager pim;
     
     void Start()
     {
