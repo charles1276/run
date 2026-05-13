@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7304269639719919370}
   - component: {fileID: 8536990834631756125}
+  - component: {fileID: 5861311617771354379}
   m_Layer: 0
   m_Name: PlayerJoinManager
   m_TagString: Untagged
@@ -67,7 +68,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 0}
   m_PlayerPrefab: {fileID: 5065943171482847077, guid: 611fbf1b5cc74a948972bdb438590a28, type: 3}
-  m_SplitScreen: 1
+  m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
   m_SplitScreenRect:
@@ -76,3 +77,19 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &5861311617771354379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435285042307013334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d2037c72ce4ea84181db414de045f46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pim: {fileID: 8536990834631756125}
+  inFront: {fileID: 0}
+  mc: {fileID: 0}
+  pl: {fileID: 0}

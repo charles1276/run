@@ -3,7 +3,7 @@ using UnityEngine;
 public class cameracontruller : MonoBehaviour
 {
     public GameObject target;
-    public camracontruller inf;
+    public InFront inf;
     public float speed =3f;
     public Vector3 offset;
     
@@ -13,7 +13,7 @@ public class cameracontruller : MonoBehaviour
        
         if (inf == null)
         {
-            inf = this.gameObject.GetComponent<camracontruller>();
+            inf = this.gameObject.GetComponent<InFront>();
 
 
         }

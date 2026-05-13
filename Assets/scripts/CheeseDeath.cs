@@ -10,12 +10,12 @@ public class CheeseDeath : MonoBehaviour
     public bool died2 = false;
     public bool died3 = false;
     public bool died4 = false;
-    public camracontruller iF;
+    public InFront iF;
     private Camera mc;
     public void Start()
     {
         mc = Camera.main;
-        iF = mc.GetComponent<camracontruller>();
+        iF = mc.GetComponent<InFront>();
         p1 = GameObject.Find("Player1");
         p2 = GameObject.Find("Player2");
         p3 = GameObject.Find("Player3");

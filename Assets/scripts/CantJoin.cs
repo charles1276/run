@@ -5,14 +5,14 @@ using UnityEngine.InputSystem;
 public class CantJoin : MonoBehaviour
 {
     public PlayerInputManager pim;
-    public camracontruller inFront;
+    public InFront inFront;
     public GameObject mc;
     public PlayerLocation pl;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         mc = GameObject.FindGameObjectWithTag("MainCamera");
-        inFront = mc.GetComponent<camracontruller>();
+        inFront = mc.GetComponent<InFront>();
         if (pim == null)
         {
             pim = GetComponent<PlayerInputManager>();

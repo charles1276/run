@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class camracontruller : MonoBehaviour
+public class InFront : MonoBehaviour
 {
     private GameObject player1;
     private GameObject player2;

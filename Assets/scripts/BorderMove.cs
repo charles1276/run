@@ -3,7 +3,7 @@ using UnityEngine;
 public class BorderMove : MonoBehaviour
 {
     public GameObject targets;
-    public camracontruller inf;
+    //public InFront inf;
     public float speed = 3f;
     public Vector3 offset;
     public cameracontruller cc;
