@@ -25,7 +25,9 @@ public class PayerMovement : MonoBehaviour
     private bool canDoubleJump;
     private Rigidbody2D rb2d;
     private float _movement;
-   
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -36,7 +38,9 @@ public class PayerMovement : MonoBehaviour
 
     void Update()
     {
-          if (groundHeck != null && groundHeck.isground == true) { isgrounded = true; }
+       
+
+        if (groundHeck != null && groundHeck.isground == true) { isgrounded = true; }
 
         rb2d.linearVelocityX = _movement;
         moveSpeed = rb2d.linearVelocity.x;
@@ -47,20 +51,20 @@ public class PayerMovement : MonoBehaviour
         }
         
 
-       // if (rb2d.linearVelocity.x > 0)
-       // {
-       //     animator.SetInteger("walkdirction", +1);
-        //    GetComponent<SpriteRenderer>().flipX = false;
-       // }
-       // else if (rb2d.linearVelocity.x < 0)
-       // {
-       //     animator.SetInteger("walkdirction", -1);
-       //     GetComponent<SpriteRenderer>().flipX = true;
-      //  }
-      //  else
-      //  {
-        //    animator.SetInteger("walkdirction", 0);
-      //  }
+        if (rb2d.linearVelocity.x > 0)
+        {
+            animator.SetInteger("walkdirction", +1);
+            spriteRenderer.flipX = false;
+        }
+        else if (rb2d.linearVelocity.x < 0)
+        {
+            animator.SetInteger("walkdirction", -1);
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            animator.SetInteger("walkdirction", 0);
+        }
 
        // animator.SetBool("isJumping", rb2d.linearVelocity.y != 0);
     }
@@ -69,6 +73,7 @@ public class PayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext ctx)
     {
         _movement = ctx.ReadValue<Vector2>().x * speed;
+        
     }
     public void Jump(InputAction.CallbackContext ctx)
     {
