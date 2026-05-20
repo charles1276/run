@@ -11,8 +11,8 @@ public class PayerMovement : MonoBehaviour
 
     public Transform groundCheck;
     public GroundHeck groundHeck;
-    private GameObject player;
-    public float moveSpeed;
+    public GameObject player;
+        public float moveSpeed;
     public float jumpHeight = 200.0f;
     public float speed = 3.0f;
     public float dashSpeed = 140f;
@@ -25,8 +25,8 @@ public class PayerMovement : MonoBehaviour
     private bool canDoubleJump;
     private Rigidbody2D rb2d;
     private float _movement;
-    private Animator animator;
-    private SpriteRenderer spriteRenderer;
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
 
     void Start()
     {
@@ -53,17 +53,19 @@ public class PayerMovement : MonoBehaviour
 
         if (rb2d.linearVelocity.x > 0)
         {
-            animator.SetInteger("walkdirction", +1);
+            
+            animator.SetInteger("walkdirection", +1);
             spriteRenderer.flipX = false;
         }
         else if (rb2d.linearVelocity.x < 0)
         {
-            animator.SetInteger("walkdirction", -1);
+            
+            animator.SetInteger("walkdirection", +1);
             spriteRenderer.flipX = true;
         }
         else
         {
-            animator.SetInteger("walkdirction", 0);
+            animator.SetInteger("walkdirection", 0);
         }
 
        // animator.SetBool("isJumping", rb2d.linearVelocity.y != 0);

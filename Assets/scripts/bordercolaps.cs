@@ -18,8 +18,8 @@ public class bordercolaps : MonoBehaviour
    
     public IEnumerator Second()
     {
-       yield return new WaitForSeconds(1);
-        //yield return new WaitForSeconds(240);
+      //yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(240);
         shrink = true;
        
     }
