@@ -6,9 +6,17 @@ public class ItemPickup : MonoBehaviour
 {
     private bool pickUpAllowed;
     public bool pickuped;
+    public bool ispickedupbyp1;
+    public bool ispickedupbyp2;
+    public bool ispickedupbyp3;
+    public bool ispickedupbyp4;
+
+    public GameObject player;
+
 
     void Update()
     {
+        
         if (pickUpAllowed)
         {
             PickUp();
@@ -19,6 +27,7 @@ public class ItemPickup : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            player = collision.gameObject;
             pickUpAllowed = true;
         }
     }
@@ -27,21 +36,35 @@ public class ItemPickup : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            player = collision.gameObject;
             pickUpAllowed = false;
         }
     }
 
     private void PickUp()
     {
-        // Add item to inventory or player
-
+        
+            
+            if (player.name == "player1")
+            {
+                ispickedupbyp1 = true;
+            }
+            else if (player.name == "player2")
+            {
+                ispickedupbyp2 = true;
+            }
+            else if (player.name == "player3")
+            {
+                ispickedupbyp3 = true;
+            }
+            else if (player.name == "player4")
+            {
+                ispickedupbyp4 = true;
+            }
+            // Add item to inventory or player
+             Debug.Log("Item picked up by " + player.name);
         Destroy(gameObject);
-
-
-
-
-
-
-
+        
     }
 }
+

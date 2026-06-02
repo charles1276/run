@@ -13,13 +13,10 @@ public class PayerMovement : MonoBehaviour
     public GroundHeck groundHeck;
     public GameObject player;
         public float moveSpeed;
-    public float jumpHeight = 200.0f;
+    public float jumpHeight = 35.0f;
+    public float doubleJumpHeight = 30.0f;
     public float speed = 3.0f;
-    public float dashSpeed = 140f;
-    private float dashTime = 1.0f;
-    private float dashCooldown = 1f;
-    private bool canDash = true;
-    private bool isDashing = false;
+   
    
     public bool isgrounded;
     private bool canDoubleJump;
@@ -45,10 +42,7 @@ public class PayerMovement : MonoBehaviour
         rb2d.linearVelocityX = _movement;
         moveSpeed = rb2d.linearVelocity.x;
 
-        if (!isDashing)
-        {
-            rb2d.linearVelocity = new Vector2(_movement, rb2d.linearVelocity.y);
-        }
+        
         
 
         if (rb2d.linearVelocity.x > 0)
@@ -89,43 +83,11 @@ public class PayerMovement : MonoBehaviour
             }
             else if (canDoubleJump == true)
             {
-                rb2d.linearVelocityY = jumpHeight;
+                rb2d.linearVelocityY = doubleJumpHeight;
                 
                 canDoubleJump = false;
             }
 
         }
-    }
-    public void Dash(InputAction.CallbackContext ctx)
-    {
-        if (canDash)
-        {
-            StartCoroutine(Dash());
-        }
-    }
-    private IEnumerator Dash()
-    {
-        
-        canDash = false;
-        isDashing = true;
-        float originalGravity = rb2d.gravityScale;
-        rb2d.gravityScale = 0;
-        Debug.Log("Dash");
-        float dr = moveSpeed * dashSpeed;
-        rb2d.linearVelocity = new Vector2(dr, 0);
-        Debug.Log(rb2d.linearVelocity);
-        tr.emitting = true;
-        yield return new WaitForSeconds(dashTime);
-        Debug.Log("End Dash");
-        rb2d.gravityScale = originalGravity;
-        isDashing = false;
-
-        yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
-        tr.emitting = false;
-
-    }
-    
-   
-   
+    } 
 }
